@@ -20,7 +20,7 @@ brew install python@3.9
 pip3 install virtualenv
 
 # ssdx installation
-Copy install.sh script into source folder and run following in terminal:
+#Copy install.sh script into source folder and run following in terminal:
 
 cd *SourceFolder*
 sh install.sh
