@@ -16,6 +16,9 @@ echo f | xcopy /s /f "%cd%\scripts\run.cmd" "%cd%\..\run.cmd"
 echo.
 echo.
 echo.
+echo. Copying permission set
+copy config\Workplace_Command_Center_Standard_PermSet_Admin_Full_Access_Cloned.permissionset-meta.xml
+force-app\main\default\permissionsets
 echo Finished!
 
 echo.
