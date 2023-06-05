@@ -105,7 +105,7 @@ def createScratchOrg_installUnlockedPackages(term):
 
 def createScratchOrg_pushMetadata(term):
 	helper.startLoading("Pushing metadata")
-	return helper.tryCommand(term, ["sfdx force:source:push"], True, True, False)
+	return helper.tryCommand(term, ["sfdx force:source:push -f"], True, True, False)
 
 # PUSH WORKDOTCOM-METADATA
 # ------------------------------
