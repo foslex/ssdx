@@ -1,7 +1,7 @@
 @echo off
 
 RD /S /Q "%cd%\.ssdx"
-call git clone https://github.com/navikt/ssdx.git .ssdx
+call git clone https://github.com/foslex/ssdx.git .ssdx
 cd .ssdx
 
 call pip3 install virtualenv
