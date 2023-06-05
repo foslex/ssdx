@@ -107,6 +107,12 @@ def createScratchOrg_pushMetadata(term):
 	helper.startLoading("Pushing metadata")
 	return helper.tryCommand(term, ["sfdx force:source:push"], True, True, False)
 
+# PUSH WORKDOTCOM-METADATA
+# ------------------------------
+def InstallWorkDotComPermissionSet(term):
+	helper.startLoading("Pushing WorkDotCom metadata")
+	return helper.tryCommand(term, ["sfdx force:source:deploy -f Workplace_Command_Center_Standard_PermSet_Admin_Full_Access_Cloned.permissionset-meta.xml"], True, True, False)
+
 
 # PUSH UNPACKAGABLE METADATA
 # ------------------------------
