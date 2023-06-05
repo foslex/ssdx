@@ -128,6 +128,55 @@ def createScratchOrg_pushNonDeployedMetadata(term):
 	helper.startLoading("Pushing unpackagable metadata")
 	return helper.tryCommand(term,  ["sfdx force:source:deploy -p " + path], True, True, False)
 
+
+# ASSIGN WORKDOTCOM PERM SETS
+# ------------------------------
+
+import time
+
+def AssignWorkDotComPermissionSet(term):
+
+	helper.startLoading("Assigning workdotcom configured permission sets")
+	commands = [] 
+	for permset in permsets:
+		commands.append("sfdx force:user:permset:assign -n" Workplace_Command_Center_Standard_PermSet_Admin_Full_Access_Cloned)
+	
+	trysLeft = 12
+	while(permsetGroupsAreNotYetComplete(term)):
+		trysLeft -= 1
+		if (trysLeft == 0): break
+		helper.changeLoadingText("Assigning configured permission sets (waiting for groups to be updated. Trys left: {})".format(trysLeft))
+		time.sleep(20)
+
+	results = helper.tryCommand(term, commands, True, False, False)
+
+	helper.changeLoadingText("Assigned permission sets: {}".format(', '.join(permsets)))
+	helper.spinnerSuccess()
+
+	return results
+
+import json, re
+
+def permsetGroupsAreNotComplete(term):
+	res = helper.tryCommand(term, ["sfdx force:apex:execute -f ./.ssdx/apex/validatePermsetGroups.cls --json"], False, False, False)
+
+	if (not res[0]):
+		try:
+			jsonOutput = json.loads(res[1][0])
+		except:
+			time.sleep(20)
+			return True
+		if ("logs" in jsonOutput['result']):
+			log = jsonOutput['result']['logs']
+			amount = re.split("BEFORE(.*)AFTER", log)[3]
+			return amount != '0'
+	return false
+
+
+
+
+
+
 # ASSIGN PERM SETS
 # ------------------------------
 
