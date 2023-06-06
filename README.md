@@ -43,7 +43,7 @@ sh install.sh
 #### SSDX Installation
 
 1. Right-click on
-[install.cmd](https://raw.githubusercontent.com/navikt/ssdx/master/scripts/install.cmd) and click "Save Link As" (or equivalent)
+[install.cmd](https://raw.githubusercontent.com/foslex/ssdx/master/scripts/install.cmd) and click "Save Link As" (or equivalent)
 2. Save to root of SFDX project folder as "install.cmd"
 3. Double click install.cmd
 
