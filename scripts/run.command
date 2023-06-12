@@ -10,3 +10,4 @@ cd ..
 source .ssdx/venv/bin/activate
 pip install -r .ssdx/python/requirements.txt > /dev/null
 python .ssdx/python/run.py $1
+#If this fails use pip3 and python3
